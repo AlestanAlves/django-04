@@ -22,4 +22,12 @@ def listar_coachs(request):
     }
     return render(request, 'listar_coachs.html', args) 
 
+
+def recuperar_coach(request, id):
+    item = Coach.objects.filter(activate=False).all()
+    if item is not None:
+        item.ativo = True
+        item.save ()
+        return redirect('coachs/listar')
+
 # Create your views here.
