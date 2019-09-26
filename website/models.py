@@ -11,3 +11,8 @@ class Coach(models.Model):
     ativo = models.BooleanField(default=True)
     def __str__(self):
         return self.nome
+    
+class User(models.Model):
+    nome = models.ForeignKey(Coach, on_delete=None)
+    email = models.EmailField(max_length=255, verbose_name='Email')
+    senha = models.CharField(max_lenght=16, verbose_name='Senha')
